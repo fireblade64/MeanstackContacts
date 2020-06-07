@@ -1,0 +1,96 @@
+<!-- Title group  -->
+<div class="title-group">
+  <h1 class="mat-h1">Edit Contact</h1>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<!-- Form -->
+<div class="inner-wrapper">
+  <form [formGroup]="contactForm" (ngSubmit)="updateContactForm()" #resetContactForm="ngForm" novalidate>
+    <!-- Left block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+        <!-- Name -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" formControlName="contact_name">
+          <mat-error *ngIf="handleError('contact_name', 'required')">
+            You must provide a <strong>name</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- PLZ -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="PLZ" formControlName="contact_plz">
+          <mat-error *ngIf="handleError('contact_plz', 'required')">
+            You must provide a <strong>plz</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Street -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Street" formControlName="contact_street">
+          <mat-error *ngIf="handleError('contact_street', 'required')">
+            You must provide a <strong>street</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Phonenumber -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Phonenumber" formControlName="contact_phonenumber">
+          <mat-error *ngIf="handleError('contact_phonenumber', 'required')">
+            You must provide a <strong>phonenumber</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <!-- Right block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+        <!-- Surname -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Surname" formControlName="contact_surname">
+          <mat-error *ngIf="handleError('contact_surname', 'required')">
+            You must provide a <strong>surname</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- City -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="City" formControlName="contact_city">
+          <mat-error *ngIf="handleError('contact_city', 'required')">
+            You must provide a <strong>city</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Number -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Number" formControlName="contact_number">
+          <mat-error *ngIf="handleError('contact_number', 'required')">
+            You must provide a <strong>number</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Date of birth -->
+        <mat-form-field>
+          <input matInput readonly [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob"
+                 (dateChange)="formatDate($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="handleError('dob', 'required')">
+            Date of birth is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <!-- Submit & Reset -->
+    <mat-card>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn">Update</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>
